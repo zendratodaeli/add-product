@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import AddProduct from "./addProduct";
 import DeleteProduct from "./deleteProduct";
 import UpdateProduct from "./updateProduct";
+import Link from "next/link";
 const prisma = new PrismaClient();
 
 const getProducts = async () => {
@@ -53,6 +54,7 @@ export default async function Product() {
                 <td className="flex justify-center space-x-1"> 
                   <UpdateProduct brands={brands} product={product}/>
                   <DeleteProduct product={product}/>
+                  <Link href={`/products/${product.id}`} className="btn btn-sm btn-success">Details</Link>
                 </td>
               </tr>
             ))}
