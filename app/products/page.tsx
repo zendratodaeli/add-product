@@ -7,13 +7,12 @@ const prisma = new PrismaClient();
 
 const getProducts = async () => {
   const res = await prisma.product.findMany({
-    select: {
-      id: true,
-      title: true,
-      price: true,
-      brandId: true,
-      brand: true
+    orderBy: {
+      createdAt: 'desc'
     },
+    include: {
+      brand: true
+    }
   });
   return res;
 }
